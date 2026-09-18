@@ -34,7 +34,7 @@ Stack *create_stack(int size) {
   return s;
 }
 
-void push(Stack *s, int key) { s->data[++s->top] = key; }
+void push(Stack *s, char key) { s->data[++s->top] = key; }
 
 int pop(Stack *s) { return s->data[s->top--]; }
 
@@ -45,7 +45,7 @@ int peek(Stack *s) { return s->data[s->top]; }
 int precedence(char c) {
   if (c == '^') {
     return 3;
-  } else if (c == '*' || c == '/' || c == '%') {
+  } else if (c == '*' || c == '/') {
     return 2;
   } else if (c == '+' || c == '-') {
     return 1;
@@ -116,11 +116,7 @@ int main() {
   char infix[256];
 
   printf("Enter infix expression: ");
-
-  if (scanf("%255[^\n]", infix) != 1) {
-    printf("No input read\n");
-    return 1;
-  }
+  scanf("%255[^\n]", infix);
 
   char *result = postfix(infix);
 

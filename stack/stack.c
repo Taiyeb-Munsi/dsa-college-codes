@@ -59,7 +59,7 @@ void display(Stack *s) {
     printf("%d ", s->data[i]);
 }
 
-int menu() {
+int main() {
   int size, ch, key;
   printf("Enter the size of the stack : ");
   scanf("%d", &size);

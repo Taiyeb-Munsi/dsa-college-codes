@@ -57,6 +57,8 @@ void display(Stack *s) {
 
   for (int i = 0; i <= s->top; ++i)
     printf("%d ", s->data[i]);
+
+  printf("\n");
 }
 
 int main() {

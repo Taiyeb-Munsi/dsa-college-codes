@@ -22,6 +22,8 @@ Node *create_node(int key) {
 }
 
 void delete_list(Node *head) {
+  if (head == NULL) { return; }
+
   while (head != NULL) {
     Node *next = head->next;
     free(head);

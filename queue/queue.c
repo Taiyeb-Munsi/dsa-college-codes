@@ -1,4 +1,5 @@
-// Implementation of standard menu driven queue
+
+// Implementation of standard menu driven linear queue
 
 #include <stdio.h>
 #include <stdlib.h>

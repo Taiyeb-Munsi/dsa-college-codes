@@ -142,6 +142,8 @@ void deleteP(Node **head, int pos) {
 }
 
 void display(Node *head) {
+	if (head == NULL) printf("List empty\n");
+
   for (Node *ptr = head; ptr != NULL; ptr = ptr->next) { printf("%d ", ptr->data); }
   printf("\n");
 }

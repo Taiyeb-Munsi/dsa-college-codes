@@ -62,19 +62,19 @@ void insertP(Node **head, int data, int pos) {
 	Node *newNode =  createNode(data);
 	
 	
-	Node *temp = *head;
+	Node *ptr = *head;
 	int i = 0;
 	
-	while (temp->next != NULL && i < pos - 1) {
-		temp = temp->next;
+	while (ptr->next != NULL && i < pos - 1) {
+		ptr = ptr->next;
 		++i;
 	}
 	
-	newNode->next = temp->next;
-	newNode->prev = temp;
+	newNode->next = ptr->next;
+	newNode->prev = ptr;
 	
 	if (newNode->next != NULL) (newNode->next)->prev = newNode;
-	temp->next = newNode;
+	ptr->next = newNode;
 }
 
 void deleteF(Node **head) {
@@ -109,12 +109,12 @@ void deleteE(Node **head) {
 		return;
 	}
 	
-	Node *temp = *head;
+	Node *ptr = *head;
 	
-	while (temp->next->next != NULL) temp = temp->next;
+	while (ptr->next->next != NULL) ptr = ptr->next;
 	
-	free(temp->next);
-	temp->next = NULL;
+	free(ptr->next);
+	ptr->next = NULL;
 }
 
 void deleteP(Node **head, int pos) {
@@ -131,22 +131,22 @@ void deleteP(Node **head, int pos) {
 		return;
 	}
 	
-	Node *temp = *head;
+	Node *ptr = *head;
 	int i = 0;
 	
-	while (temp != NULL && i < pos) { //Going to the node to be deleted insteadd of previous one, idea given by Upasana
-		temp = temp->next;
+	while (ptr != NULL && i < pos) { //Going to the node to be deleted insteadd of previous one, idea given by Upasana
+		ptr = ptr->next;
 		++i;
 	}
 	
-	if (temp == NULL) {
+	if (ptr == NULL) {
 		printf("Invalid position\n");
 		return;
 	}
 	
-	temp->prev->next = temp->next;
-	if (temp->next != NULL) temp->next->prev = temp->prev;
-	free(temp);
+	ptr->prev->next = ptr->next;
+	if (ptr->next != NULL) ptr->next->prev = ptr->prev;
+	free(ptr);
 }
 
 void display(Node *head) {

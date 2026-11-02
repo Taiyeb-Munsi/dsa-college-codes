@@ -48,7 +48,7 @@ int search(int *arr, int key, int size) {
 void dfs(int **g) {
     int vN = g[0][0], eN = g[0][1];
     Stack *s = createStack(eN + 1);
-    int *visited = (int *)malloc(vN + 1 * sizeof(int));
+    int *visited = (int *)malloc((vN + 1) * sizeof(int));
 
     push(s, g[1][0]);
     while (s->top != -1) {
@@ -79,7 +79,14 @@ int main() {
     edgeList[0][1] = eN;
     
     printf("Enter the edges : \n");
-	for (int i = 1; i <= eN; ++i) scanf("%d %d", &edgeList[i][0], &edgeList[i][1]);
+	  for (int i = 1; i <= eN; ++i) {
+        scanf("%d %d", &edgeList[i][0], &edgeList[i][1]);
+        
+        while (edgeList[i][0] < 0 || edgeList[i][0] > vN || edgeList[i][1] < 0 || edgeList[i][1] > vN) {
+            printf("Vertices must be between 0 and %d, re-enter the edge : \n", vN);
+            scanf("%d %d", &edgeList[i][0], &edgeList[i][1]);
+        }
+    }
     
     printf("DFS Traversal : ");
     dfs(edgeList);

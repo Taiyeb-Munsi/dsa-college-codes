@@ -52,6 +52,10 @@ void display(Node *root, int space) {
 	display(root->left, space);
 }
 
+void printTree(Node *root) {
+	display(root, 0);
+}
+
 void inorder(Node *root) {
     if (root == NULL) return;
     
@@ -74,10 +78,6 @@ void postorder(Node *root) {
     postorder(root->left);
     postorder(root->right);
     printf("%d ", root->data);
-}
-
-void printTree(Node *root) {
-	display(root, 0);
 }
 
 int main() {

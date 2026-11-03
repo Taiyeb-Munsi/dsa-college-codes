@@ -18,6 +18,15 @@ Node *createNode(int data) {
 	return temp;
 }
 
+void deleteTree(Node *root) {
+    if (root == NULL) return;
+    
+    deleteTree(root->left);
+    deleteTree(root->right);
+    
+    free(root);
+}
+
 Node *inputTree() {
 	char ch;
 	int temp;
@@ -98,6 +107,7 @@ int main() {
     postorder(root);
     
     printf("\n");
-	
+
+	deleteTree(root);	
 	return 0;
 }

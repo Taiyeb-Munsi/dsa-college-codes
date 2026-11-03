@@ -94,6 +94,15 @@ void expTree(char *e) {
     printTree(res);
 }
 
+void deleteTree(Node *root) {
+    if (root == NULL) return;
+    
+    deleteTree(root->left);
+    deleteTree(root->right);
+    
+    free(root);
+}
+
 int main() {
     char expression[100];
 
@@ -103,5 +112,6 @@ int main() {
     printf("Expression tree : \n");
     expTree(expression);
 
+	deleteTree(root);
     return 0;
 }
